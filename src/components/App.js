@@ -5,13 +5,9 @@ import {filmsData} from "../filmsData";
 console.log(filmsData);
 
 class App extends React.Component {
-    constructor() {
-        super();
-
-        this.state = {
-            films: filmsData
-        };
-    }
+    state = {
+        films: filmsData
+    };
 
     render() {
         console.log(this);
