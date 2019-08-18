@@ -34,6 +34,15 @@ class App extends React.Component {
         });
     };
 
+    removeFilmFromWillWatch = film => {
+        const updateWillWatch = this.state.filmWillWatch.filter(function (item) {
+            return item.id !== film.id;
+        });
+        this.setState({
+            filmWillWatch: updateWillWatch,
+            })
+    };
+
     render() {
         console.log("render", this.state, this);
 
@@ -47,7 +56,8 @@ class App extends React.Component {
                                     <div className="col-6 mb-4" key={film.id}>
                                         <RemoveFilm film={film}
                                                     removeFilm={this.removeFilm}
-                                                    addFilmWillWatch={this.addFilmWillWatch}/>,</div>);
+                                                    addFilmWillWatch={this.addFilmWillWatch}
+                                                    removeFilmFromWillWatch={this.removeFilmFromWillWatch}/>,</div>);
                             })}
                         </div>
                     </div>

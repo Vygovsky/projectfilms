@@ -4,10 +4,10 @@ class RemoveFilm extends React.Component {
     state = {
         willWatch: false
 
-    }
+    };
 
     render() {
-        const {film, removeFilm, addFilmWillWatch} = this.props;
+        const {film, removeFilm, addFilmWillWatch, removeFilmFromWillWatch} = this.props;
         return (
             <div className="card">
                 <img className="card-img-top"
@@ -18,12 +18,22 @@ class RemoveFilm extends React.Component {
                     <div className="d-flex justify-content-between align-items-center">
                         <p className="mb-0">Rating: {film.vote_average}</p>
                         {this.state.willWatch === true ?
-                            (<button type="button" className="btn btn-success"
-                                    onClick={addFilmWillWatch.bind(null, film)}>
-                                Will Watch
-                            </button> ):( <button type="button" className="btn btn-secondary"
-                                                onClick={addFilmWillWatch.bind(null, film)}>
-                                Remove Will Watch
+                            (<button type="button" className="btn btn-success" onClick={()=>{
+                                this.setState({
+                                    willWatch:false
+                                });
+                                    removeFilmFromWillWatch(film)
+                                }}>
+                                 RemoveWill Watch
+                            </button>
+                            ):(
+                                <button type="button" className="btn btn-secondary"
+                                        onClick={()=>{
+                                            this.setState({
+                                                willWatch:true
+                                            })
+                                        addFilmWillWatch(film)}}>
+                                Add Will Watch
                             </button>)
                         }
 
